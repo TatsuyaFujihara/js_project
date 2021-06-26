@@ -5,11 +5,11 @@
 </head>
 <body>
     <script>
-        var result = prompt('日本の首都は', '');
+        let result = prompt('日本の首都は', '');
             
             while (result !== "東京") {
                 alert('不正解')
-                var result = prompt('日本の首都は', '');
+                prompt('日本の首都は', '');
             }
             if (result === "東京") {
                 alert('正解!')
