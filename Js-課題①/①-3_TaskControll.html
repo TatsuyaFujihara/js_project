@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+    <script>
+        // 初期タスク
+        const tasks = ['掃除', '買い物', '散歩']
+        // 題目
+        console.log(
+            '========================\n' +
+            '現在持っているタスク一覧\n' +
+            '========================'
+        );
+        // 初期タスク一覧表示
+        for (let i = 0; i < tasks.length; i++) {
+            console.log(i + ' : ' + tasks[i]);
+        }
+
+        // タスク追加後動作
+        // 【タスク状態検索】【タスク追加】のポップアップ表示
+        const state = prompt('「確認、追加、削除、終了」の4つのいずれかを入力してください');
+        
+        const add = prompt('タスクを入力してください');
+        tasks.push(add);
+        // 題目
+        console.log(
+            '========================\n' +
+            '現在持っているタスク一覧\n' +
+            '========================'
+        );
+        // 初期タスク一覧表示
+        for (let i = 0; i < tasks.length; i++) {
+            console.log(i + ' : ' + tasks[i]);
+        }
+
+    </script>
+</body>
+</html>
