@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+</head>
+<body>
+    <p>
+        <label>Fizz： <input type="text" id="fizz"></label><br>
+        <label>Buzz：<input type="text" id="buzz"></label>
+    </p>
+        <input type="button" value="Check" onclick="res()">
+
+    <ul id="all">   
+    </ul>
+
+    <p id="again"></p>
+    <script>
+        // const res = () => {
+            function res() {
+            // テキストボックスに入力された値を取得
+            const fizz = document.getElementById("fizz");
+            const num1 = fizz.value;
+            const buzz = document.getElementById("buzz");
+            const num2 = buzz.value;
+            // 入力された値を整数か否か確認
+            if ( num1 % 1 == 0 && num2 % 1 == 0 ) {
+                // FizzBuzz動作開始
+                for ( let i = 1; i < 100; i++ ) {
+                    if ( i % num1 == 0 && i % num2 == 0 ) {
+                        const num = document.createElement("li")
+                        num.innerHTML = "FizzBuzz " + i;
+                        all.appendChild(num);
+                    } else if ( i % num1 == 0 ) {
+                        const num = document.createElement("li")
+                        num.innerHTML = "Fizz " + i;
+                        all.appendChild(num); 
+                    } else if ( i % num2 == 0 ) {
+                        const num = document.createElement("li")
+                        num.innerHTML = "Buzz " + i;
+                        all.appendChild(num);
+                    } else {
+                        console.log ();
+                    }
+                }
+            } else {
+                again.innerHTML = "整数を入力してください";
+            }   
+        }
+
+    </script>
+</body>
+</html>
