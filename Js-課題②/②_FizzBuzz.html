@@ -10,43 +10,47 @@
     </p>
         <input type="button" value="Check" onclick="res()">
 
-    <ul id="all">   
-    </ul>
-
+    <ul id="all"></ul>
     <p id="again"></p>
-    <script>
-        // const res = () => {
-            function res() {
-            // テキストボックスに入力された値を取得
-            const fizz = document.getElementById("fizz");
-            const num1 = fizz.value;
-            const buzz = document.getElementById("buzz");
-            const num2 = buzz.value;
-            // 入力された値を整数か否か確認
-            if ( num1 % 1 == 0 && num2 % 1 == 0 ) {
-                // FizzBuzz動作開始
-                for ( let i = 1; i < 100; i++ ) {
-                    if ( i % num1 == 0 && i % num2 == 0 ) {
-                        const num = document.createElement("li")
-                        num.innerHTML = "FizzBuzz " + i;
-                        all.appendChild(num);
-                    } else if ( i % num1 == 0 ) {
-                        const num = document.createElement("li")
-                        num.innerHTML = "Fizz " + i;
-                        all.appendChild(num); 
-                    } else if ( i % num2 == 0 ) {
-                        const num = document.createElement("li")
-                        num.innerHTML = "Buzz " + i;
-                        all.appendChild(num);
-                    } else {
-                        console.log ();
-                    }
-                }
-            } else {
-                again.innerHTML = "整数を入力してください";
-            }   
-        }
 
+    <script>
+            function res() {
+                // "ul"のデータ件数を取得
+                const list_element = document.getElementById('all');
+                const date = list_element.childElementCount;
+                // "ul"のデータが０である場合、"ul"のデータを全削除
+                if (date !== 0) {
+                    list_element.innerHTML = '';
+                }
+                // テキストボックスに入力された値を取得
+                const fizz = document.getElementById('fizz');
+                const num1 = fizz.value;
+                const buzz = document.getElementById('buzz');
+                const num2 = buzz.value;
+                // 入力された値を整数か否か確認
+                if ( num1 % 1 === 0 && num1 !== '' &&
+                    num2 % 1 === 0 && num2 !== '' ) {
+                // FizzBuzz動作開始
+                    for ( let i = 1; i < 100; i++ ) {
+                        if ( i % num1 === 0 && i % num2 === 0 ) {
+                            const num = document.createElement('li')
+                            num.innerHTML = 'FizzBuzz ' + i;
+                            all.appendChild(num);
+                        } else if ( i % num1 === 0 ) {
+                            const num = document.createElement('li')
+                            num.innerHTML = 'Fizz ' + i;
+                            all.appendChild(num); 
+                        } else if ( i % num2 === 0 ) {
+                            const num = document.createElement('li')
+                            num.innerHTML = 'Buzz ' + i;
+                            all.appendChild(num);
+                        }
+                    }
+                // 入力された値が整数ではない場合の処理
+                } else {
+                    again.innerHTML = '整数を入力してください';
+                }   
+            }
     </script>
 </body>
 </html>
