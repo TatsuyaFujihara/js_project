@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+</head>
+
+<script src="todo.js"></script>
+
+<body>
+    <div class="form-check-inline">
+        <label><input class="" type="radio" onclick="status()" checked>全て</label>    
+        <label><input class="" type="radio" onclick="status()">作業中</label>
+        <label><input class="" type="radio" onclick="status()">完了</label>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th scope="col">id</th>
+                <th scope="col">コメント</th>
+                <th scope="col">状態</tr>
+            </tr>
+        </thead>
+<!-- タスクの一覧 -->
+        <tbody id="tbody">
+            <td>
+            </td>
+        </tbody>
+    </table>
+<!-- 新規タスクの追加 -->
+    <p>
+        <label><input type="text" id="content"></label>        
+        <input type="button" value="追加" onclick="add()">
+    </p>
+    
+</body>
+</html>

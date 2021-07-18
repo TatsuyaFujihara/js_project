@@ -1,38 +1,3 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="utf-8">
-</head>
-<body>
-    <div class="form-check-inline">
-        <label><input class="" type="radio" onclick="status()" checked>全て</label>    
-        <label><input class="" type="radio" onclick="status()">作業中</label>
-        <label><input class="" type="radio" onclick="status()">完了</label>
-    </div>
-
-    <table>
-        <thead>
-            <tr>
-                <th scope="col">id</th>
-                <th scope="col">コメント</th>
-                <th scope="col">状態</tr>
-            </tr>
-        </thead>
-<!-- タスクの一覧 -->
-        <tbody id="tbody">
-            <td>
-                <input class="unCompleted" type="submit" value="作業中">
-                <input type="hidden" name="state" value="1">
-            </td>
-        </tbody>
-    </table>
-<!-- 新規タスクの追加 -->
-    <p>
-        <label><input type="text" id="content"></label>        
-        <input type="button" value="追加" onclick="add()">
-    </p>
-    
-    <script>
         const lists = [];
         function add() {
 // 入力された値、tbody内の情報を取得 ▶︎ tbodyの中を空に
@@ -42,9 +7,11 @@
 // 入力された値をlists配列に追加
             const add = {content: content.value, status: 1}
             lists.push(add);
-            console.log(lists);
+            roop();
+        }
 
 // 配列の中身をループ処理
+        function roop() {
             lists.forEach((list, i) => {   
             // 繰り返し時のインデックス値を表示             
                 const newList = tbody.insertRow();
@@ -61,9 +28,22 @@
                 statusButt.type = 'submit';
                 statusButt.value = '作業中';
                 statusCell.appendChild(statusButt);
-            });
+            // 削除ボタンの設置
+                const delCell = newList.insertCell();
+                const delButt = document.createElement('input');
+                delButt.type = 'button';
+                delButt.value = '削除';
+                delButt.id = i;
+                delButt.addEventListener("click", {id: delButt.id, handleEvent: del}, false);
+                delCell.appendChild(delButt);
+            });   
         }
-    </script>
 
-</body>
-</html>
+        function del(id) {
+            const delId= id.target.id;
+            lists.splice(delId, 1);
+
+            const tbody = document.getElementById('tbody');
+            tbody.innerHTML = '';
+            roop();
+        }
