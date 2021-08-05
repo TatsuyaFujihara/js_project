@@ -5,7 +5,7 @@ function add() {
     const tbody = document.getElementById('tbody');
     tbody.innerHTML = '';
 // 入力された値をlists配列に追加
-    const add = {content: content.value, status: 1}
+    const add = {content: content.value, status: 0}
     lists.push(add);
     roop();
 }
@@ -24,10 +24,17 @@ function roop() {
         todoCell.appendChild(todo);
     // 配列"lists"の"status"オブジェクトの要素による、条件分岐
         const statusCell = newList.insertCell();
-        const statusButt = document.createElement('input');
-        statusButt.type = 'submit';
-        statusButt.value = '作業中';
+        const statusButt = document.createElement('button');
+        const statusId = list.status;
+        statusButt.id = i;
+        statusButt.addEventListener("click", {id: statusButt.id, handleEvent: status}, false);
+        if (statusId === 0) {
+            statusButt.textContent = '作業中';
+        } else {
+            statusButt.textContent = '完了';
+        }
         statusCell.appendChild(statusButt);
+
     // 削除ボタンの設置
         const delCell = newList.insertCell();
         const delButt = document.createElement('input');
@@ -47,3 +54,15 @@ function del(id) {
     tbody.innerHTML = '';
     roop();
 }
+
+function status(id) {
+    const statusId= id.target.id;
+    const staArr= lists[statusId];
+    if (staArr.status === 0) {
+        staArr.status = 1;
+    } else {
+        staArr.status = 0;
+    }
+    tbody.innerHTML = '';
+    roop();
+};
