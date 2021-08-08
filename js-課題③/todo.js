@@ -18,11 +18,10 @@ function roop() {
     lists.forEach((list, i) => {   
         const statusId = list.status;       
         const newList = tbody.insertRow();
-        newList.classList.add('show');
         if (statusId === 0) {
-            newList.id = 'unCompletes'+i;
+            newList.classList.add('work');
         } else if (statusId === 1){
-            newList.id = 'Completes'+i;
+            newList.classList.add('finish');
         }
         filter();
         // インデックス値の代入 
@@ -84,65 +83,31 @@ function status(id) {
 
 // 表示切り替えテスト
 function filter() {
-    const radioButtAll = document.getElementById('all');
-    const radioButtWorking = document.getElementById('working');
-    const radioButtDone = document.getElementById('done');
-
-    const tableBody = document.getElementById('tbody');
-    const row = tableBody.rows.length;
-    for (let i = 0; i < row; i++) {
-
-        if (radioButtAll.checked) {
-            const uncompleteRow = document.getElementById('unCompletes'+i);
-                if (uncompleteRow !== null) {
-                    const unCompClass = uncompleteRow.classList.contains('displayNone');                
-                    if (unCompClass === true) {
-                        uncompleteRow.classList.replace('displayNone', 'show');
-                    }
-                }
-                const completeRow = document.getElementById('Completes'+i);
-                if (completeRow !== null) {
-                    const CompClass = completeRow.classList.contains('displayNone');                
-                    if (CompClass === true) {
-                        completeRow.classList.replace('displayNone', 'show');
-                    }
-                }
-        } else if (radioButtWorking.checked) {
-        // 完了したtodoを非表示にさせるclassを付与する
-            const completeRow = document.getElementById('Completes'+i);   
-                if (completeRow !== null) {
-                    const CompClass = completeRow.classList.contains('show');                
-                    if (CompClass === true) {
-                        completeRow.classList.replace('show', 'displayNone');
-                    }
-                }
-            // 作業中のtodoを表示させるclassを付与する
-                const uncompleteRow = document.getElementById('unCompletes'+i);
-                if (uncompleteRow !== null) {
-                    const unCompClass = uncompleteRow.classList.contains('displayNone');                
-                    if (unCompClass === true) {
-                        uncompleteRow.classList.replace('displayNone', 'show');
-                    }
-                }
-
-        } else if (radioButtDone.checked) {
-            // 完了したtodoを非表示にさせるclassを付与する
-            const uncompleteRow = document.getElementById('unCompletes'+i);   
-                if (uncompleteRow !== null) {
-                    const unCompClass = uncompleteRow.classList.contains('show');                
-                    if (unCompClass === true) {
-                        uncompleteRow.classList.replace('show', 'displayNone');
-                    }
-                }
-            // 作業中のtodoを表示させるclassを付与する
-                const completeRow = document.getElementById('Completes'+i);
-                if (completeRow !== null) {
-                    const CompClass = completeRow.classList.contains('displayNone');                
-                    if (CompClass === true) {
-                        completeRow.classList.replace('displayNone', 'show');
-                    }
-                }
+    const option = document.getElementsByName('select'); //ラジオボタンの取得
+    const workingTasks = document.querySelectorAll('.work');
+    const finishTasks = document.querySelectorAll('.finish');    
+        
+        if (option[1].checked) {
+            workingTasks.forEach(element => {
+                element.style.display = '';
+            });
+            finishTasks.forEach(element => {
+                element.style.display = 'none';
+            });
+        } else if (option[2].checked) {
+            workingTasks.forEach(element => {
+                element.style.display = 'none';
+            });
+            finishTasks.forEach(element => {
+                element.style.display = '';
+            });
+        } else {
+            workingTasks.forEach(element => {
+                element.style.display = '';
+            });
+            finishTasks.forEach(element => {
+                element.style.display = '';
+            });
         }
-    }
 };
    
