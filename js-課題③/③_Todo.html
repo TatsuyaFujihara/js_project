@@ -2,13 +2,14 @@
 <html lang="ja">
 <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="todo.css">
 </head>
 
 <body>
     <div class="form-check-inline">
-        <label><input class="" type="radio" onclick="status()" checked>全て</label>    
-        <label><input class="" type="radio" onclick="status()">作業中</label>
-        <label><input class="" type="radio" onclick="status()">完了</label>
+        <label><input name="select" type="radio" id="all" value="all" onclick="filter()" checked>全て</label>    
+        <label><input name="select" type="radio" id="working" value="working" onclick="filter()" >作業中</label>
+        <label><input name="select" type="radio" id="done" value="done" onclick="filter()" >完了</label>
     </div>
 
     <table>
